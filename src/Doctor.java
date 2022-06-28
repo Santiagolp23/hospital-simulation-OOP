@@ -1,3 +1,5 @@
+import ui.UIMenu;
+
 public class Doctor {
     static int nextValidId = 0;
     int id;
@@ -16,5 +18,9 @@ public class Doctor {
 
     public void printName() {
         System.out.println(name);
+    }
+
+    public static void showNextValidId() {
+        System.out.println(nextValidId);
     }
 }
