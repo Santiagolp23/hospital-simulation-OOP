@@ -1,4 +1,6 @@
-public class User {
+package model;
+
+public abstract class User {
     static int nextValidId;
     private int id;
     private String name, address, email, phoneNumber;
@@ -58,4 +60,5 @@ public class User {
         return "User: " + name + ", Email: " + email +
                 "\nAddress: " + address + ". Phone: " + phoneNumber;
     }
+
 }

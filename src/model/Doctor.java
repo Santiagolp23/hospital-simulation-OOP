@@ -1,12 +1,14 @@
+package model;
+
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Doctor extends User {
     static int nextValidId;
     String specialty;
+    ArrayList<AvailableAppointment> availableAppointments = new ArrayList<>();
 
-
-    Doctor(String name, String specialty, String email) {
+    public Doctor(String name, String specialty, String email) {
         super(name, email);
         this.specialty = specialty;
         super.setId(++nextValidId);
@@ -18,7 +20,13 @@ public class Doctor extends User {
         System.out.println(nextValidId);
     }
 
-    ArrayList<AvailableAppointment> availableAppointments = new ArrayList<>();
+    public String getSpecialty() {
+        return specialty;
+    }
+
+    public void setSpecialty(String specialty) {
+        this.specialty = specialty;
+    }
 
     public void addAvailableAppointment(Date date, String time) {
         availableAppointments.add(new AvailableAppointment(date, time));
@@ -28,14 +36,23 @@ public class Doctor extends User {
         return availableAppointments;
     }
 
+    @Override
+    public String toString() {
+        return super.toString() + "\nSpecialty: " + specialty + "\nAvailable: " + availableAppointments.toString();
+    }
+
     public static class AvailableAppointment {
+        public Date date;
+        public String time;
         private int id;
-        private Date date;
-        private String time;
 
         public AvailableAppointment(Date date, String time) {
             this.date = date;
             this.time = time;
+        }
+
+        public void printVariables() {
+            System.out.println(date + time);
         }
 
         public int getId() {
@@ -60,6 +77,11 @@ public class Doctor extends User {
 
         public void setTime(String time) {
             this.time = time;
+        }
+
+        @Override
+        public String toString() {
+            return "Available Appointments \nDate: " + date + "\nTime: " + time;
         }
     }
 

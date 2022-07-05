@@ -1,8 +1,10 @@
-public class Patient extends User{
+package model;
+
+public class Patient extends User {
     private String birthday, bloodType;
     private double height, weight;
 
-    Patient(String name, String email) {
+    public Patient(String name, String email) {
         super(name, email);
         System.out.println("The assigned patient's name is: " + name);
         System.out.println("email is: " + email);
@@ -41,7 +43,9 @@ public class Patient extends User{
     }
 
     @Override
-    public String toString() {
+    public String
+
+    toString() {
         return "Patient: " +
                 "birthday=  " + getBirthday() + '\'' +
                 ", bloodType= " + getBloodType() + '\'' +
