@@ -1,21 +1,34 @@
 package model;
 
 public class Patient extends User {
-    private String birthday, bloodType;
-    private double height, weight;
+    //Atributos
+    private String birthday;
+    private double weight;
+    private double height;
+    private String blood;
 
-    public Patient(String name, String email) {
-        super(name, email);
-        System.out.println("The assigned patient's name is: " + name);
-        System.out.println("email is: " + email);
+    public Patient(String name, String email){
+        super(name,email);
+        //mas instrucciones
     }
 
-    public String getWeight() {
-        return weight + " kg.";
-    }
-
+    // 54.5
     public void setWeight(double weight) {
         this.weight = weight;
+    }
+
+    // 54.5 Kg. String
+    public String getWeight(){
+        return this.weight + " Kg.";
+    }
+
+
+    public String getHeight() {
+        return height + " Mts.";
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
     }
 
     public String getBirthday() {
@@ -26,31 +39,24 @@ public class Patient extends User {
         this.birthday = birthday;
     }
 
-    public String getBloodType() {
-        return bloodType;
+    public String getBlood() {
+        return blood;
     }
 
-    public void setBloodType(String bloodType) {
-        this.bloodType = bloodType;
-    }
-
-    public String getHeight() {
-        return height + " meters.";
-    }
-
-    public void setHeight(double height) {
-        this.height = height;
+    public void setBlood(String blood) {
+        this.blood = blood;
     }
 
     @Override
-    public String
-
-    toString() {
-        return "Patient: " +
-                "birthday=  " + getBirthday() + '\'' +
-                ", bloodType= " + getBloodType() + '\'' +
-                ", height= " + getHeight() +
-                ", weight= " + getWeight() +
-                '}';
+    public String toString() {
+        return super.toString() + "\nAge: " + birthday + "\n Weight: " +getWeight()+ "\n Height"+getHeight()+"\nBlood"+blood;
     }
+
+    @Override
+    public void showDataUser() {
+        System.out.println("Paciente");
+        System.out.println("Historial completo desde naciemiento");
+
+    }
+
 }

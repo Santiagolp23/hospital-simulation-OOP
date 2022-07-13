@@ -1,9 +1,11 @@
 package model;
 
 public abstract class User {
-    static int nextValidId;
     private int id;
-    private String name, address, email, phoneNumber;
+    private String name;
+    private String email;
+    private String address;
+    private String phoneNumber;
 
     public User(String name, String email) {
         this.name = name;
@@ -26,14 +28,6 @@ public abstract class User {
         this.name = name;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -42,23 +36,32 @@ public abstract class User {
         this.email = email;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        if (phoneNumber.length() < 8 || phoneNumber.length() > 12) {
-            System.out.println("The number has to be within 8 to 12 digits");
-
-        } else {
+        if (phoneNumber.length() > 8){
+            System.out.println("El número telefónico debe ser de 8 dígitos máximo");
+        }else if(phoneNumber.length() == 8){
             this.phoneNumber = phoneNumber;
         }
     }
 
     @Override
     public String toString() {
-        return "User: " + name + ", Email: " + email +
-                "\nAddress: " + address + ". Phone: " + phoneNumber;
+        return "model.User: " + name + ", Email: "+email+
+                "\nAddreess: "+address+". Phone: "+phoneNumber;
     }
+
+    public abstract void showDataUser();
 
 }

@@ -1,58 +1,61 @@
 package model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Doctor extends User {
-    static int nextValidId;
-    String specialty;
+    //Atributo
+    private String speciality;
+
+    public Doctor(String name, String email){
+        super(name,email);
+    }
+
+    public String getSpeciality() {
+        return speciality;
+    }
+
+    public void setSpeciality(String speciality) {
+        this.speciality = speciality;
+    }
+
+
     ArrayList<AvailableAppointment> availableAppointments = new ArrayList<>();
-
-    public Doctor(String name, String specialty, String email) {
-        super(name, email);
-        this.specialty = specialty;
-        super.setId(++nextValidId);
-        System.out.println("The assigned doctor's name is: " + this.getName());
-        System.out.println("The assigned id is: " + getId());
+    public void addAvailableAppointment(String date, String time){
+        availableAppointments.add(new Doctor.AvailableAppointment(date,time));
     }
 
-    public static void showNextValidId() {
-        System.out.println(nextValidId);
-    }
-
-    public String getSpecialty() {
-        return specialty;
-    }
-
-    public void setSpecialty(String specialty) {
-        this.specialty = specialty;
-    }
-
-    public void addAvailableAppointment(Date date, String time) {
-        availableAppointments.add(new AvailableAppointment(date, time));
-    }
-
-    public ArrayList<AvailableAppointment> getAvailableAppointments() {
+    public ArrayList<AvailableAppointment> getAvailableAppointments(){
         return availableAppointments;
     }
 
     @Override
     public String toString() {
-        return super.toString() + "\nSpecialty: " + specialty + "\nAvailable: " + availableAppointments.toString();
+        return super.toString() + "\nSpeciality: " + speciality + "\nAvailable: " + availableAppointments.toString();
     }
 
-    public static class AvailableAppointment {
-        public Date date;
-        public String time;
+    @Override
+    public void showDataUser() {
+        System.out.println("Empleado del Hospital: CRuz Roja");
+        System.out.println("Departamento: Cancerología");
+    }
+
+
+    public static class AvailableAppointment{
         private int id;
+        private Date date;
+        private String time;
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
-        public AvailableAppointment(Date date, String time) {
-            this.date = date;
+        public AvailableAppointment(String date, String time) {
+            try {
+                this.date = format.parse(date);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
             this.time = time;
-        }
-
-        public void printVariables() {
-            System.out.println(date + time);
         }
 
         public int getId() {
@@ -67,6 +70,12 @@ public class Doctor extends User {
             return date;
         }
 
+        public String getDate(String DATE) {
+            return format.format(date);
+        }
+
+
+
         public void setDate(Date date) {
             this.date = date;
         }
@@ -79,9 +88,10 @@ public class Doctor extends User {
             this.time = time;
         }
 
+
         @Override
         public String toString() {
-            return "Available Appointments \nDate: " + date + "\nTime: " + time;
+            return "Available Appointments \nDate: " +date+ "\nTime: " + time;
         }
     }
 

@@ -2,24 +2,12 @@ package model;
 
 import java.util.Date;
 
-public class Appointments implements ISchedulable{
-
+public class AppointmentDoctor implements ISchedulable {
     private int id;
-    private User healthProvider;
     private Patient patient;
+    private Doctor doctor;
     private Date date;
     private String time;
-
-    Appointments(User healthProvider, Patient patient, Date date, String time) {
-        if (healthProvider instanceof Patient) {
-            System.out.println("Cannot assign appointment with patients");
-        } else {
-            this.healthProvider = healthProvider;
-            this.patient = patient;
-            this.date = date;
-            this.time = time;
-        }
-    }
 
     public int getId() {
         return id;
@@ -35,6 +23,14 @@ public class Appointments implements ISchedulable{
 
     public void setPatient(Patient patient) {
         this.patient = patient;
+    }
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
     }
 
     public Date getDate() {
