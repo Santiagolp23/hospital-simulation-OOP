@@ -10,7 +10,7 @@ public class PatientMenuUI {
 
             System.out.println("\n\n");
             System.out.println("Patient");
-            System.out.println("Welcome: " + MenuUI.patinetLogged);
+            System.out.println("Welcome: " + MenuUI.loggedPatient);
             System.out.println("1. Book an appointment");
             System.out.println("2. My Appointments");
             System.out.println("0. Logout");

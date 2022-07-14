@@ -14,7 +14,7 @@ public class DoctorMenuUI {
         do {
             System.out.println("\n\n");
             System.out.println("Doctor");
-            System.out.println("Welcome " + MenuUI.doctorLogged.getName());
+            System.out.println("Welcome " + MenuUI.loggedDoctor.getName());
             System.out.println("1. Add Available Appointment");
             System.out.println("2. My Scheduled apponintments");
             System.out.println("0. Logout");
@@ -76,8 +76,8 @@ public class DoctorMenuUI {
                     responseTime = Integer.valueOf(sc.nextLine());
                 }while (responseTime == 2);
 
-                MenuUI.doctorLogged.addAvailableAppointment(date,time);
-                checkDoctorAvailableAppointments(MenuUI.doctorLogged);
+                MenuUI.loggedDoctor.addAvailableAppointment(date,time);
+                checkDoctorAvailableAppointments(MenuUI.loggedDoctor);
 
 
             }else if(response == 0){

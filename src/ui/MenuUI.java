@@ -8,13 +8,13 @@ import java.util.Scanner;
 
 public class MenuUI {
 
-    public static final String[] MONTHS = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
-    public static Doctor doctorLogged;
-    public static Patient patinetLogged;
+    public static final String[] MONTHS = {"January","February","March","April","May","June","July","August", "September", "October", "November", "December"};
+    public static Doctor loggedDoctor;
+    public static Patient loggedPatient;
 
     public static void showMenu(){
         System.out.println("Welcome to My Appointments");
-        System.out.println("Selecciona la opción deseada");
+        System.out.println("Please select the desired option");
 
         int response = 0;
         do {
@@ -49,17 +49,13 @@ public class MenuUI {
         //userType = 2 Patient
 
         ArrayList<Doctor> doctors = new ArrayList<>();
-        doctors.add(new Doctor("Alejandro Martínez", "alejandro@mail.com"));
-        doctors.add(new Doctor("Karen Sosa", "kare@mail.com"));
-        doctors.add(new Doctor("Rocío Gómez", "rocio@mail.com"));
+        doctors.add(new Doctor("Santiago Lopez", "test@mail.com"));
 
         ArrayList<Patient> patients = new ArrayList<>();
-        patients.add(new Patient("Anahí Salgado", "anahi@mail.com"));
-        patients.add(new Patient("Roberto Rodríguez", "roberto@mail.com"));
         patients.add(new Patient("Carlos Sánchez", "carlos@mail.com"));
 
 
-        boolean emailCorrect = false;
+        boolean correctEmail = false;
         do {
             System.out.println("Insert your email: [a@a.com]");
             Scanner sc = new Scanner(System.in);
@@ -67,9 +63,8 @@ public class MenuUI {
             if (userType == 1){
                 for (Doctor d: doctors){
                     if (d.getEmail().equals(email)){
-                        emailCorrect = true;
-                        //Obtener el usuario logeado
-                        doctorLogged = d;
+                        correctEmail = true;
+                        loggedDoctor = d;
                         DoctorMenuUI.showDoctorMenu();
                     }
                 }
@@ -78,15 +73,15 @@ public class MenuUI {
             if (userType == 2){
                 for (Patient p: patients){
                     if (p.getEmail().equals(email)){
-                        emailCorrect = true;
-                        patinetLogged = p;
+                        correctEmail = true;
+                        loggedPatient = p;
                         //showPatientMenu
                     }
                 }
             }
 
 
-        }while (!emailCorrect);
+        }while (!correctEmail);
 
     }
 
