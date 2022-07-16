@@ -27,6 +27,7 @@ public class DoctorMenuUI {
                     showAddAvailableAppointmentsMenu();
                     break;
                 case 2:
+                    //Doctor.getAvailableAppointments();
                     break;
                 case 0:
                     MenuUI.showMenu();
@@ -77,7 +78,7 @@ public class DoctorMenuUI {
                 }while (responseTime == 2);
 
                 MenuUI.loggedDoctor.addAvailableAppointment(date,time);
-                checkDoctorAvailableAppointments(MenuUI.loggedDoctor);
+                addDoctorWithAvailableAppointments(MenuUI.loggedDoctor);
 
 
             }else if(response == 0){
@@ -88,7 +89,7 @@ public class DoctorMenuUI {
     }
 
 
-    private static void checkDoctorAvailableAppointments(Doctor doctor){
+    private static void addDoctorWithAvailableAppointments(Doctor doctor){
         if (doctor.getAvailableAppointments().size() > 0
             && !doctorsAvailableAppointments.contains(doctor)){
             doctorsAvailableAppointments.add(doctor);

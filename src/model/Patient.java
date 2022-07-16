@@ -1,23 +1,43 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 public class Patient extends User {
-    //Atributos
     private String birthday;
     private double weight;
     private double height;
     private String blood;
 
-    public Patient(String name, String email){
-        super(name,email);
-        //mas instrucciones
+    private ArrayList<AppointmentDoctor> appointmentDoctors = new ArrayList<>();
+    private ArrayList<AppointmentNurse> AppointmentNurse = new ArrayList<>();
+
+    public ArrayList<AppointmentDoctor> getAppointmentDoctors() {
+        return appointmentDoctors;
     }
 
-    // 54.5
+    public void addAppointmentDoctors(Doctor doctor, Date date, String time) {
+        AppointmentDoctor appointmentDoctor = new AppointmentDoctor(this, doctor);
+        appointmentDoctor.schedule(date, time);
+        appointmentDoctors.add(appointmentDoctor);
+    }
+
+    public ArrayList<model.AppointmentNurse> getAppointmentNurse() {
+        return AppointmentNurse;
+    }
+
+    public void addAppointmentNurse(ArrayList<model.AppointmentNurse> appointmentNurse) {
+        AppointmentNurse = appointmentNurse;
+    }
+
+    public Patient(String name, String email){
+        super(name,email);
+    }
+
     public void setWeight(double weight) {
         this.weight = weight;
     }
 
-    // 54.5 Kg. String
     public String getWeight(){
         return this.weight + " Kg.";
     }
